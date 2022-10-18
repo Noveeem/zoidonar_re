@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Zoidonar</string>
+    <string name="hintEmail">Email Address</string>
+    <string name="hintPassword">Password</string>
+    <string name="hintFN">First Name</string>
+    <string name="hintLN">Last Name</string>
+    <string name="hintAddress">Address</string>
+    <string name="hintDate">Date of Birth</string>
+    <string name="hintPhone">Mobile Number</string>
+    <string name="btnLogin">Log In</string>
+    <string name="btnCreate">Create</string>
+    <string name="btnSignup">Create New Account</string>
+    <string name="txtLogin">Login your account here</string>
+    <string name="txtSignup">Fill up the form</string>
+    <string name="forgot">Forgotten Password?</string>
+    <string name="TODO">TODO</string>
+    <string name="NEXT">NEXT</string>
+</resources>
