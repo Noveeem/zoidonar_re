@@ -1,10 +1,16 @@
 package com.example.zoidonar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Patterns;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.*;
@@ -22,7 +28,8 @@ public class Register_third extends AppCompatActivity {
 
     TextInputEditText etEmailAddress, etPasswordd;
     TextInputLayout tilEmailAddress, tilPasswordd;
-    Button btnCreate;
+    Button btnCreate, btnOK;
+    ImageView btnClose;
 
     private FirebaseAuth mAuth;
 
@@ -49,10 +56,17 @@ public class Register_third extends AppCompatActivity {
             public void onClick(View v) {
                 if (!validateEmail() | !validatePassword()){return;}
                 CreateNewUser();
+
+
             }
         });
 
+
+
+
     }
+
+
 
     public void CreateNewUser(){
         Intent i = getIntent();
@@ -65,26 +79,77 @@ public class Register_third extends AppCompatActivity {
         String email = etEmailAddress.getText().toString().trim();
         String password = etPasswordd.getText().toString().trim();
 
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             User user = new User(firstName, lastName, Address, Dob, email, Mobile, Age);
+
                             FirebaseDatabase.getInstance().getReference("donors")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(Register_third.this, "Success!", Toast.LENGTH_SHORT).show();
+                                        public void onComplete(@NonNull Task<Void> task) {;
+                                            alertSuccess();
+                                            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Intent intent = new Intent(Register_third.this, MainActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+                                            }, 2000);
+                                            Toast.makeText(Register_third.this, "Successfully created a new account.", Toast.LENGTH_SHORT).show();
                                         }
                                     });
+
                         } else {
-                            Toast.makeText(Register_third.this, "Failed!", Toast.LENGTH_SHORT).show();
+                            alertWarning();
+
+                            Toast.makeText(Register_third.this, "Ooops! Something went wrong, try again later.", Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
+
+
     }
+    public void alertWarning(){
+        View alertCustomDialog = LayoutInflater.from(Register_third.this).inflate(R.layout.alert_failed, null);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Register_third.this);
+        alertDialog.setView(alertCustomDialog);
+        final AlertDialog dialog = alertDialog.create();
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+
+        btnOK = (Button) alertCustomDialog.findViewById(R.id.btnOK);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+        btnClose = (ImageView) alertCustomDialog.findViewById(R.id.btnClose);
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+    }
+
+    public void alertSuccess(){
+        View alertCustomDialog = LayoutInflater.from(Register_third.this).inflate(R.layout.alert_succes, null);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Register_third.this);
+        alertDialog.setView(alertCustomDialog);
+        final AlertDialog dialog = alertDialog.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+
 
     private boolean validateEmail(){
         String email = etEmailAddress.getText().toString().trim();
@@ -114,7 +179,7 @@ public class Register_third extends AppCompatActivity {
             return false;
         } else {
             if (password.length() < 8){
-                tilPasswordd.setError("Field can't be empty!");
+                tilPasswordd.setError("Password should be more than 8 characters!");
                 requestFocus(etPasswordd);
                 return false;
             } else {

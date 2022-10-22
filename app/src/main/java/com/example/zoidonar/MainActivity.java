@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.*;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
     ProfileFragment profileFragment = new ProfileFragment();
     HomeFragment homeFragment = new HomeFragment();
     NotificationFragment formFragment = new NotificationFragment();
+    FloatingActionButton iconForm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -52,14 +54,19 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.iconHome:
                         getSupportFragmentManager().beginTransaction().replace(R.id.Framecontainer, homeFragment).commit();
                         return true;
-                    case R.id.iconNotification:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.Framecontainer, formFragment).commit();
-                        return true;
                     case R.id.iconProfile:
                         getSupportFragmentManager().beginTransaction().replace(R.id.Framecontainer, profileFragment).commit();
                         return true;
                 }
                 return false;
+            }
+        });
+
+        iconForm = (FloatingActionButton) findViewById(R.id.iconForm);
+        iconForm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.Framecontainer, formFragment).commit();
             }
         });
 

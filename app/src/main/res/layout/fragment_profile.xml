@@ -19,37 +19,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/goBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#FFFFFF"
-            android:contentDescription="@string/TODO"
-            android:src="@drawable/ic_return" />
-
-        <TextView
-            android:id="@+id/textView"
+            android:id="@+id/Logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/semibold"
-            android:text="Loading..."
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            tools:ignore="TextContrastCheck" />
-
-        <ImageView
-            android:id="@+id/imgUserIcon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="150dp"
-            android:layout_marginTop="60dp"
+            android:layout_centerInParent="true"
             android:contentDescription="@string/TODO"
-            android:src="@drawable/ic_user" />
-
+            android:src="@drawable/zoidonar_logo" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

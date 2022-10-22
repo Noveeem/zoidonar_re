@@ -11,32 +11,73 @@
         android:id="@+id/Framecontainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/coordinatorLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinatorLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+
+<!--        <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--            android:id="@+id/bottomAppBar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+<!--            <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--                android:id="@+id/bottomNavigationView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:background="@drawable/navigation_bar"-->
+<!--                android:elevation="10dp"-->
+<!--                app:itemIconSize="30sp"-->
+<!--                app:itemIconTint="@drawable/navigation_select"-->
+<!--                app:labelVisibilityMode="unlabeled"-->
+<!--                app:menu="@menu/menu" >-->
+
+<!--            </com.google.android.material.bottomnavigation.BottomNavigationView>-->
+
+<!--        </com.google.android.material.bottomappbar.BottomAppBar>-->
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/CoordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="10dp"
-            android:background="@drawable/navigation_bar"
-            android:elevation="10dp"
-            app:itemIconSize="30sp"
-            app:itemIconTint="@drawable/navigation_select"
-            app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/menu" />
+            app:fabCradleMargin="10dp"
+            app:fabCradleRoundedCornerRadius="10dp"
+            app:fabCradleVerticalOffset="10dp"
+            >
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/bottomNavigationView"
+                android:layout_marginEnd="16dp"
+                android:elevation="10dp"
+                app:itemIconSize="30sp"
+                app:labelVisibilityMode="unlabeled"
+                app:menu="@menu/menu"
+                app:itemIconTint="@drawable/navigation_select"
+                android:background="@drawable/transparent_bg"
+                />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/iconForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/TODO"
+            android:src="@drawable/ic_form_svgrepo_com"
+            app:layout_anchor="@id/bottomAppBar"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

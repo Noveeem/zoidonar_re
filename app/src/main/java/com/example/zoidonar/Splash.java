@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Splash extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,7 @@ public class Splash extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(Splash.this, Login.class);
                 startActivity(intent);
+                finish();
             }
         }, 2000);
     }
