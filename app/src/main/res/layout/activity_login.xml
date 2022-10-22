@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/zoidonarLogo" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilEmailAddress"
+        android:id="@+id/tilEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmail"
         app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText

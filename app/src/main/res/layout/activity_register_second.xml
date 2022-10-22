@@ -7,7 +7,7 @@
     tools:context=".Register_second">
 
     <ImageView
-        android:id="@+id/zoidonarLogo"
+        android:id="@+id/zoidonarLogo2"
         android:layout_width="203dp"
         android:layout_height="166dp"
         android:layout_marginStart="150dp"
@@ -31,10 +31,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/zoidonarLogo" />
+        app:layout_constraintTop_toBottomOf="@id/zoidonarLogo2" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilEmailAddress"
+        android:id="@+id/tilEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -48,26 +48,26 @@
         app:startIconDrawable="@drawable/ic_baseline_location_on_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etEmailAddress"
+            android:id="@+id/etAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hintAddress"
-            android:inputType="text"
+            android:inputType="textPersonName"
             tools:ignore="TextContrastCheck" />
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPasswordd"
+        android:id="@+id/tilMobile"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmail"
         app:prefixText="+63"
         app:startIconDrawable="@drawable/ic_baseline_local_phone_24">
 
@@ -77,9 +77,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/hintPhone"
-            android:inputType="phone"
+            android:inputType="number"
             android:maxLength="10"
-            android:textColorHint="#757575"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,50 +88,48 @@
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="11dp"
         android:background="@drawable/ic_baseline_calendar_month_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/tilDob"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilPasswordd"
+        app:layout_constraintTop_toBottomOf="@+id/tilMobile"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilDate"
+        android:id="@+id/tilDob"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnDate"
-        app:layout_constraintTop_toBottomOf="@+id/tilPasswordd">
+        app:layout_constraintTop_toBottomOf="@+id/tilMobile">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etDate"
+            android:id="@+id/etDob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:enabled="false"
             android:hint="@string/hintDate"
-            android:inputType="date"
-            android:textSize="16sp"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnNextSecond"
+        android:id="@+id/btnCreate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="332dp"
         android:backgroundTint="#2E7D32"
-        android:fontFamily="@font/semibold"
+        android:elevation="10dp"
         android:text="@string/NEXT"
-        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilDate" />
+        app:layout_constraintTop_toBottomOf="@+id/tilDob" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,25 +10,34 @@ import android.os.Bundle;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Register extends AppCompatActivity {
 
     Button btnNext;
     TextInputEditText etFN, etLN;
     TextInputLayout tilFN, tilLN;
+
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
         //TextInputEditText
-        etFN = (TextInputEditText) findViewById(R.id.etEmailAddress);
-        etLN = (TextInputEditText) findViewById(R.id.etPasswordd);
+        etFN = (TextInputEditText) findViewById(R.id.etFN);
+        etLN = (TextInputEditText) findViewById(R.id.etLN);
 
         //TextInputLayout
-        tilFN = (TextInputLayout) findViewById(R.id.tilEmailAddress);
-        tilLN = (TextInputLayout) findViewById(R.id.tilPasswordd);
+        tilFN = (TextInputLayout) findViewById(R.id.tilFN);
+        tilLN = (TextInputLayout) findViewById(R.id.tilLN);
 
+        mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() !=null)
+        {
+            finish();
+            return;
+        }
 
         btnNext = (Button) findViewById(R.id.btnNext);
 

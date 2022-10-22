@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/zoidonarLogo" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilEmailAddress"
+        android:id="@+id/tilFN"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
         app:startIconDrawable="@drawable/ic_baseline_person_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etEmailAddress"
+            android:id="@+id/etFN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hintFN"
@@ -57,7 +57,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPasswordd"
+        android:id="@+id/tilLN"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -67,15 +67,15 @@
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/tilFN"
         app:startIconDrawable="@drawable/ic_baseline_person_24">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPasswordd"
+            android:id="@+id/etLN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hintLN"
-            android:inputType="textPersonName"
+            android:inputType="textCapSentences"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,12 +86,15 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginBottom="403dp"
         android:backgroundTint="#2E7D32"
         android:fontFamily="@font/semibold"
         android:text="@string/NEXT"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilPasswordd" />
+        app:layout_constraintTop_toBottomOf="@+id/tilLN" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
