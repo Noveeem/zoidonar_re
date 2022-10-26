@@ -7,6 +7,10 @@
 
 
     <item
+        android:id="@+id/textinput_placeholder"
+        android:title="Placeholder"/>
+
+    <item
         android:id="@+id/iconProfile"
         android:icon="@drawable/ic_profile_user_svgrepo_com"
         android:title="Profile"/>

@@ -6,21 +6,114 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/tvGreetings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="265dp"
-        android:fontFamily="@font/medium"
-        android:text="Hi, Rizal!"
-        android:textColor="@color/black"
-        android:textFontWeight="700"
-        android:textSize="24sp"
+    <RelativeLayout
+        android:id="@+id/homebar"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/topbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/txtGreet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/bold"
+            android:padding="10dp"
+            android:text="Hello! NaN."
+            android:textColor="#FFFFFF"
+            android:textSize="26sp" />
+
+        <Button
+            android:id="@+id/btnHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtGreet"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/borderwhite"
+            android:contentDescription="@string/TODO"
+            android:drawableTop="@drawable/ic_baseline_history_24"
+            android:drawableTint="#FFFFFF"
+            android:padding="10dp"
+            android:text="HISTORY"
+            app:backgroundTint="@null" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="2dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="80dp"
+            android:layout_toRightOf="@id/btnHistory"
+            android:background="?android:attr/fastScrollThumbDrawable"
+            android:backgroundTint="@color/white" />
+
+        <TextView
+            android:id="@+id/tvBT"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtGreet"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/divider5"
+            android:fontFamily="@font/regular"
+            android:text="BLOOD TYPE"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/txtBT"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvBT"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/divider5"
+            android:fontFamily="@font/bold"
+            android:text="NaN"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="2dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_toRightOf="@id/tvBT"
+            android:background="?android:attr/fastScrollThumbDrawable"
+            android:backgroundTint="@color/white" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtGreet"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/divider6"
+            android:fontFamily="@font/regular"
+            android:text="STATUS"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvBT"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/divider6"
+            android:fontFamily="@font/bold"
+            android:text="QUALIFIED"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

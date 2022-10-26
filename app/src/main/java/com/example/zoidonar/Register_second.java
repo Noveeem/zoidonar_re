@@ -65,6 +65,7 @@ public class Register_second extends AppCompatActivity {
                         c.set(Calendar.MONTH, month);
                         c.set(Calendar.DAY_OF_MONTH, day);
                         age = calculateAge(c.getTimeInMillis());
+
                     }
                 }, year, month, day);
                 dialog.show();
@@ -88,15 +89,16 @@ public class Register_second extends AppCompatActivity {
         String address = etAddress.getText().toString();
         String mobile = etMobile.getText().toString().trim();
         String dob = etDob.getText().toString().trim();
-        int userAge = age;
+        String Age = String.valueOf(age);
         Intent third = new Intent(Register_second.this, Register_third.class);
         third.putExtra("firstName", firstName);
         third.putExtra("lastName", lastName);
         third.putExtra("Address", address);
         third.putExtra("Mobile", mobile);
         third.putExtra("Dob", dob);
-        third.putExtra("Age", userAge);
+        third.putExtra("Age", Age);
         startActivity(third);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     private boolean validateAddress(){
@@ -163,13 +165,13 @@ public class Register_second extends AppCompatActivity {
 
         Calendar today = Calendar.getInstance();
 
-        int a = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
 
         if(today.get(Calendar.DAY_OF_MONTH) < dob.get(Calendar.DAY_OF_MONTH))
         {
-            a--;
+            age--;
         }
-        return a;
+        return age;
     }
 
     public void requestFocus(View view){

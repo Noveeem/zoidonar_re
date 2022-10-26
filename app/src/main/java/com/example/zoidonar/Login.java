@@ -1,10 +1,16 @@
 package com.example.zoidonar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Patterns;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.*;
@@ -71,14 +77,26 @@ public class Login extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
+        tilEmail.setEnabled(false);
+        tilPassword.setEnabled(false);
+        btnLogin.setEnabled(false);
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            reload();
+                            alertSuccess();
+                            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    reload();
+                                }
+                            }, 2000);
                         } else {
                             Toast.makeText(Login.this, "Credentials are invalid, try again!", Toast.LENGTH_SHORT).show();
+                            tilEmail.setEnabled(true);
+                            tilPassword.setEnabled(true);
+                            btnLogin.setEnabled(true);
                         }
                     }
                 });
@@ -124,6 +142,16 @@ public class Login extends AppCompatActivity {
     public void clickSignup(){
         Intent signup = new Intent(Login.this, Register.class);
         startActivity(signup);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void alertSuccess(){
+        View alertCustomDialog = LayoutInflater.from(Login.this).inflate(R.layout.alert_succes, null);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Login.this);
+        alertDialog.setView(alertCustomDialog);
+        final AlertDialog dialog = alertDialog.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 
     public void requestFocus(View view){

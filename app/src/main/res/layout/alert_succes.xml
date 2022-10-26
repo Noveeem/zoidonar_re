@@ -39,17 +39,6 @@
             android:layout_gravity="center"
             app:SpinKit_Color="@color/teal_700" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/regular"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:text="Successfully created a new account."
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
     </LinearLayout>
 
     <ImageView

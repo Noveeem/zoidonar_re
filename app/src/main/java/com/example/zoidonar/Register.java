@@ -63,6 +63,7 @@ public class Register extends AppCompatActivity {
         second.putExtra("firstName", firstName);
         second.putExtra("lastName", lastName);
         startActivity(second);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     //Validate FirstName

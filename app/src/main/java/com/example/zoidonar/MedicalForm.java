@@ -1,14 +1,14 @@
 package com.example.zoidonar;
 
-import android.os.Bundle;
-import android.widget.*;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
+import androidx.appcompat.app.AppCompatActivity;
+import android.widget.*;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ProgressBar;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,21 +17,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
+public class MedicalForm extends AppCompatActivity {
 
+    TextView textView3;
 
-public class HomeFragment extends Fragment {
-
-    TextView txtGreet, txtStatus;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_medical_form);
 
-        txtGreet = v.findViewById(R.id.txtGreet);
-        txtStatus = v.findViewById(R.id.txtStatus);
+        textView3 = (TextView) findViewById(R.id.textView3);
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
@@ -42,9 +38,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                if (user != null){
-                    txtGreet.setText("Hello! " + user.firstName);
-                    txtStatus.setText(user.Status);
+                if (user != null) {
+                    textView3.setText(user.firstName);
                 }
             }
 
@@ -53,7 +48,5 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
-        return v;
     }
 }

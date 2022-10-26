@@ -55,8 +55,10 @@ public class Register_third extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!validateEmail() | !validatePassword()){return;}
+                tilEmailAddress.setEnabled(false);
+                tilPasswordd.setEnabled(false);
+                btnCreate.setEnabled(false);
                 CreateNewUser();
-
 
             }
         });
@@ -78,6 +80,7 @@ public class Register_third extends AppCompatActivity {
         String Age = i.getStringExtra("Age");
         String email = etEmailAddress.getText().toString().trim();
         String password = etPasswordd.getText().toString().trim();
+        String status = "Pending";
 
 
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -85,8 +88,8 @@ public class Register_third extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            User user = new User(firstName, lastName, Address, Dob, email, Mobile, Age);
-
+                            User user = new User(firstName, lastName, Address, Dob, email, Mobile, Age, status);
+                            Toast.makeText(Register_third.this, status, Toast.LENGTH_SHORT).show();
                             FirebaseDatabase.getInstance().getReference("donors")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -96,9 +99,7 @@ public class Register_third extends AppCompatActivity {
                                             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    Intent intent = new Intent(Register_third.this, MainActivity.class);
-                                                    startActivity(intent);
-                                                    finish();
+                                                    reload();
                                                 }
                                             }, 2000);
                                             Toast.makeText(Register_third.this, "Successfully created a new account.", Toast.LENGTH_SHORT).show();
@@ -107,14 +108,21 @@ public class Register_third extends AppCompatActivity {
 
                         } else {
                             alertWarning();
-
                             Toast.makeText(Register_third.this, "Ooops! Something went wrong, try again later.", Toast.LENGTH_SHORT).show();
-
+                            tilEmailAddress.setEnabled(true);
+                            tilPasswordd.setEnabled(true);
+                            btnCreate.setEnabled(true);
                         }
                     }
                 });
 
 
+    }
+    public void reload(){
+        Intent intent = new Intent(Register_third.this, MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        finish();
     }
     public void alertWarning(){
         View alertCustomDialog = LayoutInflater.from(Register_third.this).inflate(R.layout.alert_failed, null);
